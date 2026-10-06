@@ -503,7 +503,13 @@ document.querySelectorAll('.lab-tab').forEach(tab=>tab.addEventListener('click',
 document.querySelectorAll('.reveal').forEach(btn=>btn.addEventListener('click',()=>{
   const answer=document.getElementById(btn.dataset.answer); answer.classList.toggle('open'); btn.textContent=answer.classList.contains('open')?'Hide':'Reveal';
 }));
-const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id));})},{rootMargin:'-20% 0px -70% 0px'});
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id));
+    }
+  });
+},{rootMargin:'-20% 0px -70% 0px'});
 modules.forEach(m=>obs.observe(m));
 </script>
 </body>
