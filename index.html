@@ -4,6 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Midterm Reviewer | Modules 1 to 5</title>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 <style>
 :root { --ink:#29232d; --muted:#746b73; --paper:#fffaf5; --panel:#ffffff; --line:#eadfd6; --navy:#2d2138; --blue:#d56b4d; --amber:#dfa63b; --purple:#8d5a9f; --green:#4f8a73; --red:#c94f5e; --shadow:0 16px 42px rgba(76,45,43,.12); }
 * { box-sizing:border-box; }
@@ -101,6 +105,8 @@ blockquote { margin:18px 0; padding:14px 18px; border-left:4px solid #f6c15b; ba
 .concept-card details { margin-top:9px; font-size:11px; color:#8c4438; }
 .concept-card summary { cursor:pointer; font-weight:800; }
 .concept-card details p { color:#675961; }
+.equation { overflow-x:auto; margin:12px 0; padding:11px 15px; border-left:4px solid var(--blue); border-radius:0 10px 10px 0; background:#fff8f0; color:#392b45; }
+.equation mjx-container { font-size:1.08em; }
 .check-strip { margin:28px 0; padding:18px; border:1px solid #e7d5c8; border-radius:14px; background:#fff; }
 .check-strip h3 { margin-top:0; color:#8c4438; }
 .check-q { display:flex; justify-content:space-between; gap:12px; align-items:center; padding:9px 0; border-top:1px solid #f0e4dc; font-size:13px; }
@@ -180,7 +186,7 @@ blockquote { margin:18px 0; padding:14px 18px; border-left:4px solid #f6c15b; ba
 <h2 id="3-center-mean-median-and-mode">3. Center: mean, median, and mode</h2>
 <p>Measures of <strong>central tendency</strong> describe a typical or central value. Select a measure that fits both the variable type and the distribution.</p>
 <ul>
-<li><strong>Arithmetic mean</strong>: add values and divide by the number of values. For ungrouped observations, \(\bar{x}=\sum x_i/n\). The mean uses every value, but extreme values can pull it toward the tail.</li>
+<li><strong>Arithmetic mean</strong>: add values and divide by the number of values. For ungrouped observations:<div class="equation">\[\bar{x}=\frac{\sum x_i}{n}\]</div>The mean uses every value, but extreme values can pull it toward the tail.</li>
 <li><strong>Median</strong>: sort the data and take the middle. For odd n it is the central ranked observation; for even n it is the mean of the two central observations. It is resistant to outliers and useful for skewed numerical data.</li>
 <li><strong>Mode</strong>: the most frequent value/category. A data set may have one mode, multiple tied modes, or no uniquely useful mode. It works for categorical data as well as numbers.</li>
 </ul>
@@ -298,7 +304,7 @@ blockquote { margin:18px 0; padding:14px 18px; border-left:4px solid #f6c15b; ba
 <p><strong>Regression analysis</strong> models the average relationship between a response/outcome (dependent variable, usually y) and one or more explanatory/predictor variables (independent variables, usually x). It can estimate associations, quantify conditional relationships, and predict outcomes for specified predictor values. A useful workflow starts with a business question, prepares and explores data, splits data, fits and compares candidate models, checks assumptions and residuals, evaluates on unseen data, and reports limitations and practical implications.</p>
 <p>Regression estimates association; it does not by itself establish that a predictor caused the response. Confounding, omitted variables, selection, and reverse direction can explain associations. Correlation is also not causation. Use domain knowledge and an appropriate study design before making causal claims.</p>
 <h2 id="2-simple-and-multiple-linear-regression">2. Simple and multiple linear regression</h2>
-<p><strong>Simple linear regression</strong> has one predictor. The fitted line is \(\hat y=a+bx\) (also written \(\hat y=\beta_0+\beta_1x\)). The intercept a/β0 is the predicted y when x=0; this may not be meaningful if x=0 is outside the data or impossible. The slope b/β1 is the predicted average change in y for a one-unit increase in x. State units and range: if x is thousands of dollars, one unit is $1,000.</p>
+<p><strong>Simple linear regression</strong> has one predictor. The fitted line is:</p><div class="equation">\[\hat y=a+bx=\beta_0+\beta_1x\]</div><p>The intercept a/β0 is the predicted y when x=0; this may not be meaningful if x=0 is outside the data or impossible. The slope b/β1 is the predicted average change in y for a one-unit increase in x. State units and range: if x is thousands of dollars, one unit is $1,000.</p>
 <p>The least-squares line chooses coefficients to minimize the sum of squared residuals. With paired observations (xᵢ,yᵢ), \(b=\sum(x_i-\bar x)(y_i-\bar y)/\sum(x_i-\bar x)^2\), and \(a=\bar y-b\bar x\). The predictions lie on the line; actual observations generally scatter around it.</p>
 <p><strong>Worked example from the slides:</strong> spend x = 1,000, 1,500, …, 4,000 corresponds to sales y = 8,000, 9,500, …, 17,000. Each $500 increase in spend accompanies $1,500 increase in sales, giving slope b=3 sales dollars per spend dollar; at x=1,000, 8,000= a+3(1,000), so a=5,000. The fitted line is ŷ=5,000+3x. At x=4,500, ŷ=$18,500. This prediction extends slightly beyond the observed predictor range, so it is extrapolation and should be treated cautiously.</p>
 <p><strong>Multiple linear regression</strong> uses several predictors: \(\hat y=\beta_0+\beta_1x_1+\cdots+\beta_px_p\). Holding the other included predictors fixed, βj is the model's estimated change in average y for a one-unit increase in xj. This “holding other variables fixed” interpretation is conditional, not proof of causation. For a house-price model, the predictors might be square footage, bedrooms, and distance from downtown. Standardized coefficients can help compare predictors measured in different units, though they do not measure causality or business value directly.</p>
@@ -375,7 +381,7 @@ blockquote { margin:18px 0; padding:14px 18px; border-left:4px solid #f6c15b; ba
 <p>A <strong>naïve forecast</strong> uses the latest actual value as the next forecast: \(F_{t+1}=y_t\). It is a simple baseline. A complex method is useful only if it improves on a reasonable baseline for the intended horizon.</p>
 <p>The <strong>mean method</strong> forecasts the average of all available past observations. As a new actual value arrives, update the mean. It is appropriate when there is no noticeable trend or seasonality, but it responds slowly to changing levels.</p>
 <h2 id="4-moving-averages">4. Moving averages</h2>
-<p>A <strong>simple moving average of order k</strong>, MA(k), averages the most recent k actual observations: \(F_{t+1}=(y_t+y_{t-1}+\cdots+y_{t-k+1})/k\). When new data arrive, include the newest observation and discard the oldest in the window. For k=3, average the last three observations to forecast the next period.</p>
+<p>A <strong>simple moving average of order k</strong>, MA(k), averages the most recent k actual observations:</p><div class="equation">\[F_{t+1}=\frac{y_t+y_{t-1}+\cdots+y_{t-k+1}}{k}\]</div><p>When new data arrive, include the newest observation and discard the oldest in the window. For k=3, average the last three observations to forecast the next period.</p>
 <p>Example: if the last three weeks are 5.2, 6.7, and 5.8 million, next week's MA(3) forecast is (5.2+6.7+5.8)/3 = 5.9 million. If actual next-week sales are 6.0 million, forecast error e=actual−forecast=0.1 million. When k is small, the forecast reacts quickly to recent changes and is less smooth; when k is large, it is smoother/slower. Large k can help with wide, infrequent fluctuations; small k can react to level shifts. A k matching seasonal period (4 quarters or 12 months) can smooth that periodic effect, but basic MA does not model trend/seasonality well and generally lags trends.</p>
 <p><strong>Weighted moving average (WMA)</strong> assigns unequal weights to observations, often larger weights to recent values. Weights should sum to 1: \(F_{t+1}=\sum w_i y_i\). More recent data matter more by design. <strong>Exponential moving average (EMA)</strong> also emphasizes recent observations, with weights decaying exponentially into the past; this makes it respond faster than a long simple average.</p>
 <h2 id="5-exponential-smoothing-models">5. Exponential smoothing models</h2>
@@ -435,9 +441,9 @@ blockquote { margin:18px 0; padding:14px 18px; border-left:4px solid #f6c15b; ba
 <h2 id="4-three-key-rule-metrics">4. Three key rule metrics</h2>
 <p>For rule A→B over M transactions:</p>
 <ul>
-<li><strong>Support</strong> of the itemset/rule: \(support(A\to B)=count(A\cup B)/M\). It is the fraction of all baskets containing both sides and describes rule coverage/reach. Low support may mean too few eligible baskets for a broad action.</li>
-<li><strong>Confidence</strong>: \(confidence(A\to B)=count(A\cup B)/count(A)=support(A\cup B)/support(A)\). It is the fraction of baskets containing A that also contain B, i.e. empirical conditional probability of B given A. High confidence can be misleading if B is already purchased by nearly everyone.</li>
-<li><strong>Lift</strong>: \(lift(A\to B)=confidence(A\to B)/support(B)=support(A\cup B)/(support(A)support(B))\). It compares the observed conditional rate with B's baseline rate. Lift &gt;1 indicates positive association beyond independence; lift=1 indicates no association beyond the baseline; lift&lt;1 indicates co-occurrence below the independent expectation.</li>
+<li><strong>Support</strong> is reach:<div class="equation">\[support(A\to B)=\frac{count(A\cup B)}{M}\]</div>It is the fraction of all baskets containing both sides.</li>
+<li><strong>Confidence</strong> is conditional reliability:<div class="equation">\[confidence(A\to B)=\frac{count(A\cup B)}{count(A)}=\frac{support(A\cup B)}{support(A)}\]</div>It is the fraction of A baskets that also contain B.</li>
+<li><strong>Lift</strong> compares against B's baseline popularity:<div class="equation">\[lift(A\to B)=\frac{confidence(A\to B)}{support(B)}\]</div>Lift &gt;1 indicates positive association beyond independence; lift=1 indicates no association beyond the baseline; lift&lt;1 indicates co-occurrence below the independent expectation.</li>
 </ul>
 <p>Metrics answer different questions: support = reach, confidence = reliability among antecedent baskets, lift = incremental association relative to B's popularity. No single threshold determines business value.</p>
 <p><strong>Worked example:</strong> Bread and Milk occur together in 3 of 5 baskets, Bread in 3, Milk in 3. Support=3/5=60%; confidence(Bread→Milk)=3/3=100%; lift=1.00/0.60=1.67. Note the reverse rule Milk→Bread has same support and confidence in this example because the counts happen to match; in general confidence depends on direction. The deck's five-basket example states Pasta→Sauce has 40% support, 100% confidence, and lift 2.50. Its high confidence means every Pasta basket in that example also includes Sauce, while lift compares this to Sauce's baseline prevalence.</p>
